@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 using namespace std;
-//虚函数表的实现
+//虚函数表的实现,了解虚函数表的构造过程
 class Base
 {
 public:
