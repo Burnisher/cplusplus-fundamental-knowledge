@@ -1,0 +1,30 @@
+#ifndef THREAD_H_
+#define THREAD_H_
+
+#include "NonCopyable.h"
+#include <pthread.h>
+
+//线程抽象类，提供启动函数覆盖
+class Thread : NonCopyable
+{
+public:
+    Thread();
+    virtual ~Thread();
+
+    void start();
+    void join();
+
+    virtual void run() = 0;
+
+    pthread_t getThreadId() const
+    { return threadId_; }
+
+private:
+    static void *runInThread(void *arg);
+    
+    pthread_t threadId_;
+    //pid_t tid_; //进程标示
+    bool isRunning_;
+};
+
+#endif //THREAD_H_
